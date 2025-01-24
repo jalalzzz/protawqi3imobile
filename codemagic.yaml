@@ -4,7 +4,7 @@ workflows:
     environment:
       # Define the Xcode version and Node.js version
       xcode: 15.0
-      node: 18
+      node: 16
       vars:
         # Your app-specific environment variables (if any)
         APP_NAME: "YourAppName"
