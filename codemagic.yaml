@@ -1,0 +1,46 @@
+workflows:
+  react_native_ios:
+    name: React Native iOS Build
+    environment:
+      # Define the Xcode version and Node.js version
+      xcode: 15.0
+      node: 18
+      vars:
+        # Your app-specific environment variables (if any)
+        APP_NAME: "YourAppName"
+        BUNDLE_ID: "com.yourdomain.yourapp"
+        CONFIGURATION: "Release"
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Install Pods
+        script: |
+          cd ios
+          pod install
+          cd ..
+      - name: Build iOS app
+        script: |
+          xcodebuild \
+            -workspace ios/${APP_NAME}.xcworkspace \
+            -scheme ${APP_NAME} \
+            -configuration ${CONFIGURATION} \
+            -sdk iphoneos \
+            -archivePath $PWD/build/${APP_NAME}.xcarchive archive
+      - name: Export .ipa
+        script: |
+          xcodebuild -exportArchive \
+            -archivePath $PWD/build/${APP_NAME}.xcarchive \
+            -exportPath $PWD/build \
+            -exportOptionsPlist ios/exportOptions.plist
+    artifacts:
+      - build/*.ipa # Upload the .ipa file to Codemagic artifacts
+    publishing:
+      scripts:
+        - name: Deploy to TestFlight (Optional)
+          script: |
+            xcrun altool --upload-app \
+              -t ios \
+              -f build/${APP_NAME}.ipa \
+              -u $APP_STORE_CONNECT_USERNAME \
+              -p $APP_STORE_CONNECT_PASSWORD
