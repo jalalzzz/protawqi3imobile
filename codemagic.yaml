@@ -4,7 +4,7 @@ workflows:
     environment:
       # Define the Xcode version and Node.js version
       xcode: 15.0
-      node: 16
+      node: 18
       vars:
         # Your app-specific environment variables (if any)
         APP_NAME: "YourAppName"
@@ -12,15 +12,15 @@ workflows:
         CONFIGURATION: "Release"
     scripts:
       - name: Install dependencies
-        script: 
+        script: |
           npm install
       - name: Install Pods
-        script: 
+        script: |
           cd ios
           pod install
           cd ..
       - name: Build iOS app
-        script: 
+        script: |
           xcodebuild \
             -workspace ios/${APP_NAME}.xcworkspace \
             -scheme ${APP_NAME} \
@@ -28,7 +28,7 @@ workflows:
             -sdk iphoneos \
             -archivePath $PWD/build/${APP_NAME}.xcarchive archive
       - name: Export .ipa
-        script: 
+        script: |
           xcodebuild -exportArchive \
             -archivePath $PWD/build/${APP_NAME}.xcarchive \
             -exportPath $PWD/build \
@@ -38,7 +38,7 @@ workflows:
     publishing:
       scripts:
         - name: Deploy to TestFlight (Optional)
-          script: 
+          script: |
             xcrun altool --upload-app \
               -t ios \
               -f build/${APP_NAME}.ipa \
