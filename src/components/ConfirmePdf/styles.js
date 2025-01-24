@@ -1,0 +1,80 @@
+import { StyleSheet, Dimensions, Platform } from "react-native";
+import { Color, Constants, Device } from "@common";
+const { width, height } = Dimensions.get("window");
+
+export default StyleSheet.create({
+  title: {
+    color: "#00000999",
+    fontSize: 18,
+    marginTop: "40%",
+    alignSelf: "center",
+    textAlign: "center",
+    fontFamily: "DINNextLTArabic-Regular",
+marginBottom:8,
+    width: "50%",
+  },
+  imgFinger: {
+    width: 60,
+    height: 60,
+    marginTop: 8,
+    borderRadius: 50,
+    opacity: 10000,
+    marginLeft: 8,
+  },
+  sign: {
+    width: "90%",
+    height: 200,
+    resizeMode: "contain",
+    alignSelf: "center",
+  
+  },
+  c1: {
+    height: 130,
+    width: 130,
+    borderRadius: 1000,
+    borderWidth: 1,
+    alignSelf: "center",
+    borderColor: "#6ac2e2",
+    //opacity: 0.2,
+    marginTop: "10%",
+  },
+  finger: {
+    alignSelf: "center",
+    marginTop: 6,
+    backgroundColor: "white",
+    width: 75,
+    height: 75,
+    borderRadius: 50,
+    opacity: 100,
+  },
+  c2: {
+    height: 110,
+    width: 110,
+    borderRadius: 110,
+    borderWidth: 1.5,
+    alignSelf: "center",
+    borderColor: "#3fb0d9",
+    opacity: 0.8,
+    justifyContent: "center",
+    marginTop: "7%",
+  },
+  c3: {
+    height: 90,
+    width: 90,
+    borderRadius: 100,
+    borderWidth: 2,
+    alignSelf: "center",
+    borderColor: "#0877D0",
+    //justifyContent: "center",
+    // marginTop: "10%",
+  },
+  txtBtm: {
+    alignSelf: "center",
+    textAlign: "center",
+    color: "#0877d0",
+    width: "60%",
+    fontFamily: "DINNextLTArabic-Regular",
+    marginTop: "10%",
+    fontSize: 15,
+  },
+});

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src/",
+    "paths": {
+      "@common": ["common"],
+      "@containers": ["containers"],
+      "@components": ["components"],
+      "@services": ["services"],
+      "@images": ["images"],
+      "@models": ["models"],
+      "@navigation": ["navigation"],
+      "@redux": ["redux"],
+      "@store": ["store"],
+      "@i18n": ["i18n"],
+      "@utils": ["utils"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
